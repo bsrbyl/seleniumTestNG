@@ -30,6 +30,7 @@ public class C03_PositiveLoginTestRaporlu extends TestBaseRapor {
         brcPage.ikinciLoginButonu.click();
         extentTest.info("login butonuna basildi");
         // Degerleri girildiginde sayfaya basarili sekilde girilebildigini test et
+
         String actualUsername= brcPage.kullaniciProfilIsmi.getText();
         String expectedUsername=ConfigReader.getProperty("brcValidUsername");
         Assert.assertEquals(actualUsername,expectedUsername);

@@ -13,7 +13,7 @@ public class C05_Assertions extends TestBase {
         //1-amazon anasayfaya gidin
         driver.get("https://www.amazon.com");
         //2-title in Amazon içerdigini test edin
-        String expectedTitle="amazon";
+        String expectedTitle="Amazon";
         String actualTitle= driver.getTitle();
         Assert.assertTrue(actualTitle.contains(expectedTitle));
         //3-arama kutusnun erişilebilir oldugunu tets edin
@@ -26,7 +26,7 @@ public class C05_Assertions extends TestBase {
         Assert.assertTrue(sonucYaziElementi.isDisplayed());
 
         //6-arama sonucunun Nutella içerdigini test edin
-        Assert.assertTrue(sonucYaziElementi.getText().contains("Kutella"));
+        Assert.assertTrue(sonucYaziElementi.getText().contains("Nutella"));
 
 
 
