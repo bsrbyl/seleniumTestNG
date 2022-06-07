@@ -17,19 +17,29 @@ public abstract class TestBaseRapor {
     @BeforeTest(alwaysRun = true) // alwaysRun : her zaman çalıştır.
     public void setUpTest() {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
+
+
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         String filePath = System.getProperty("user.dir") + "/target/Rapor/rapor"+date+".html";
+
+
         //oluşturmak istediğimiz raporu (html formatında) başlatıyoruz, filePath ile dosya yolunu belirliyoruz.
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
         extentReports.attachReporter(extentHtmlReporter);
+
+
         // İstediğiniz bilgileri buraya ekeyebiliyorsunuz.
         extentReports.setSystemInfo("Enviroment","Test");
         extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
-        extentReports.setSystemInfo("Automation Engineer", "Seher");
+        extentReports.setSystemInfo("Automation Engineer", "Busra");
         extentHtmlReporter.config().setDocumentTitle("Rapor");
         extentHtmlReporter.config().setReportName("TestNG Reports");
+        extentHtmlReporter.config().setDocumentTitle(new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date()) + "_Son Test");//test doc uzerinde tarih yazili olacak
+        // extentHtmlReporter.config().setReportName("Son Test Reports");
     }
+
+
     // Her test methodundan sonra eğer testte hata varsa, ekran görüntüsü alıp rapora ekliyor
     @AfterMethod(alwaysRun = true)
     public void tearDownMethod(ITestResult result) throws IOException {
